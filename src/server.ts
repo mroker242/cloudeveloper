@@ -24,14 +24,7 @@ import { resolve } from 'bluebird';
     }
     try{
       let filteredpath =  await filterImageFromURL(image_url);
-      //res.status(404).send('please')
-      //res.sendfile(filteredpath);
-      //deleteLocalFiles([filteredpath]);
-      //await res.status(200).sendFile(filteredpath);
-      // if (res.statusCode == 404){
-      //   console.log('errorrrrrr');
-        
-      // }
+    
        
       await res.sendFile(filteredpath);
       console.log(filteredpath);
@@ -39,6 +32,7 @@ import { resolve } from 'bluebird';
       myarr.push(filteredpath);
       res.on('finish', function(){
         deleteLocalFiles([filteredpath]);
+      res.status(200).send('Successful!');
    });
       //deleteLocalFiles(myarr);
     } catch(err){
